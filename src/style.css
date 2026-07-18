@@ -218,6 +218,17 @@
   transform: scale(1.1);
 }
 
+/* ── Boceto de la autora: página de cuaderno sobre el fondo oscuro ── */
+.autora-sketch {
+  width: 100%;
+  max-width: 22rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
 /* ── Arte de libro: cuadrícula con marcos finos de portafolio ── */
 .art-grid {
   display: grid;
