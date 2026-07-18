@@ -221,8 +221,8 @@
 /* ── Arte de libro: cuadrícula con marcos finos de portafolio ── */
 .art-grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr));
 }
 .art-grid img,
 .art-frame video {
