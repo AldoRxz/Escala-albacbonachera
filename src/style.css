@@ -1,0 +1,341 @@
+@import 'tailwindcss';
+@import '@splidejs/splide/css';
+
+@theme {
+  --color-abyss: #0b0d19;
+  --color-bone: #e2e8f0;
+  --color-gold: #d4af37;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ── Lienzo continuo: los cambios de tono se hacen con degradados, nunca con cortes ── */
+#la-obra {
+  background: linear-gradient(180deg, var(--color-abyss) 0%, #0d1020 50%, var(--color-abyss) 100%);
+}
+#cronicas {
+  background: linear-gradient(180deg, var(--color-abyss) 0%, #101426 55%, var(--color-abyss) 100%);
+}
+#galeria {
+  background: linear-gradient(180deg, var(--color-abyss) 0%, #0d1020 60%, var(--color-abyss) 100%);
+}
+#autora {
+  background: linear-gradient(180deg, var(--color-abyss) 0%, #101426 55%, var(--color-abyss) 100%);
+}
+#faq {
+  background: linear-gradient(180deg, var(--color-abyss) 0%, #0d1020 55%, var(--color-abyss) 100%);
+}
+.book-page-hero {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212, 175, 55, 0.06), transparent 70%),
+    linear-gradient(180deg, #0d1020 0%, var(--color-abyss) 100%);
+}
+.book-page-art {
+  background: linear-gradient(180deg, var(--color-abyss) 0%, #101426 55%, var(--color-abyss) 100%);
+}
+.book-page-next {
+  background: linear-gradient(180deg, var(--color-abyss) 0%, #07080f 100%);
+}
+#el-gremio {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212, 175, 55, 0.05), transparent 70%),
+    linear-gradient(180deg, var(--color-abyss) 0%, #07080f 70%, #000 100%);
+}
+
+/* ── Navbar ── */
+.nav-link {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-bone) 75%, transparent);
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--color-gold);
+}
+#navbar.is-scrolled {
+  background: linear-gradient(180deg, rgba(11, 13, 25, 0.85), rgba(11, 13, 25, 0.55));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+/* ── Hero ── */
+.hero-enter {
+  opacity: 0;
+  transform: scale(0.96);
+  animation: hero-fade 1.5s ease-out 0.2s forwards;
+}
+@keyframes hero-fade {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.text-shadow-glow {
+  text-shadow:
+    0 0 30px rgba(226, 232, 240, 0.35),
+    0 2px 20px rgba(11, 13, 25, 0.8);
+}
+
+/* Indicador de scroll: destello vertical animado */
+.scroll-hint {
+  width: 1px;
+  height: 3.5rem;
+  background: linear-gradient(180deg, transparent, var(--color-gold), transparent);
+  animation: hint-pulse 2.2s ease-in-out infinite;
+}
+@keyframes hint-pulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scaleY(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* ── Botones CTA estilo RPG: borde dorado, sin fondos plásticos ── */
+.btn-rpg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: transparent;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  will-change: transform;
+}
+.btn-rpg:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 18px rgba(212, 175, 55, 0.18),
+    0 0 22px rgba(212, 175, 55, 0.12);
+  background-color: rgba(212, 175, 55, 0.04);
+}
+/* Variante Ko-fi: vino quemado que no rompe la armonía */
+.btn-rpg--kofi {
+  border-color: #7a2e2e;
+  color: #d8a5a5;
+}
+.btn-rpg--kofi:hover {
+  box-shadow:
+    inset 0 0 18px rgba(122, 46, 46, 0.3),
+    0 0 22px rgba(122, 46, 46, 0.2);
+  background-color: rgba(122, 46, 46, 0.08);
+}
+
+/* ── Portada flotando ── */
+.book-float {
+  animation: book-bob 6s ease-in-out infinite;
+}
+@keyframes book-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* ── Ficha de personaje ── */
+/* La ilustración rompe los márgenes y se funde con el fondo (multiply elimina el fondo claro del sheet) */
+.character-art img {
+  width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
+  display: block;
+  mix-blend-mode: multiply;
+  filter: contrast(1.05);
+  mask-image: radial-gradient(ellipse 75% 85% at 50% 45%, #000 55%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 85% at 50% 45%, #000 55%, transparent 95%);
+}
+
+.glass-card {
+  background: rgba(11, 13, 25, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 0.375rem;
+}
+
+/* Viñetas de estrella dorada */
+.star-list li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+  font-size: 0.7em;
+  top: 0.25em;
+}
+
+/* ── Galería: marcos finos, foco con fade, secundarias atenuadas ── */
+#galeria-splide .splide__slide {
+  opacity: 0.35;
+  transition: opacity 0.7s ease;
+  padding: 0 0.5rem;
+}
+#galeria-splide .splide__slide.is-active {
+  opacity: 1;
+}
+#galeria-splide .splide__slide img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  outline: 1px solid rgba(212, 175, 55, 0.15);
+  background: #000;
+}
+#galeria-splide .splide__arrow {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  opacity: 1;
+}
+#galeria-splide .splide__arrow svg {
+  fill: var(--color-gold);
+  width: 1rem;
+  height: 1rem;
+}
+#galeria-splide .splide__pagination__page {
+  background: rgba(226, 232, 240, 0.25);
+}
+#galeria-splide .splide__pagination__page.is-active {
+  background: var(--color-gold);
+  transform: scale(1.1);
+}
+
+/* ── Arte de libro: cuadrícula con marcos finos de portafolio ── */
+.art-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.art-grid img,
+.art-frame video {
+  width: 100%;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  outline: 1px solid rgba(212, 175, 55, 0.15);
+  background: #000;
+}
+
+/* ── FAQ: acordeón nativo con estética RPG ── */
+.faq-item {
+  background: rgba(11, 13, 25, 0.55);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 0.25rem;
+  transition: border-color 0.3s ease;
+}
+.faq-item[open],
+.faq-item:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.1rem 3rem 1.1rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  position: relative;
+  color: var(--color-bone);
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary::after {
+  content: '✦';
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  transition: transform 0.3s ease;
+}
+.faq-item[open] summary::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+.faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  color: color-mix(in srgb, var(--color-bone) 80%, transparent);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.faq-answer p + p {
+  margin-top: 0.75rem;
+}
+
+/* ── Sección Gremio: textura sutil ── */
+.gremio-texture {
+  position: relative;
+}
+.gremio-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.69 0 0 0 0 0.22 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Scroll reveal (Intersection Observer añade .is-visible) ── */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Iconos sociales ── */
+.social-icon {
+  color: color-mix(in srgb, var(--color-bone) 50%, transparent);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icon:hover {
+  color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+/* Scroll suave para los anclajes de la navbar */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Respeto a usuarios con movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .book-float,
+  .scroll-hint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .scroll-animate {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
