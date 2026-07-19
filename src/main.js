@@ -10,6 +10,23 @@ const onNavScroll = () => {
 window.addEventListener('scroll', onNavScroll, { passive: true })
 onNavScroll()
 
+/* ── Menú hamburguesa (móvil) ── */
+const navToggle = document.getElementById('nav-toggle')
+const navMenu = document.getElementById('nav-menu')
+if (navToggle && navMenu) {
+  const setMenu = (open) => {
+    navMenu.classList.toggle('is-open', open)
+    navToggle.classList.toggle('is-open', open)
+    navToggle.setAttribute('aria-expanded', String(open))
+    navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú')
+    document.body.style.overflow = open ? 'hidden' : ''
+  }
+  navToggle.addEventListener('click', () => setMenu(!navMenu.classList.contains('is-open')))
+  navMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenu(false))
+  })
+}
+
 /* ── Parallax sutil del Hero (rAF, sin bloquear el hilo principal) ── */
 const heroBg = document.getElementById('hero-bg')
 if (heroBg && !prefersReducedMotion) {

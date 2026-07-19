@@ -61,6 +61,104 @@
   border-bottom: 1px solid rgba(212, 175, 55, 0.12);
 }
 
+/* El logo y la hamburguesa quedan por encima del overlay del menú móvil */
+#navbar nav > a,
+.nav-toggle {
+  position: relative;
+  z-index: 2;
+}
+
+/* Botón hamburguesa (solo móvil) que se transforma en X */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 0.6rem 0.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--color-gold);
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease;
+}
+.nav-toggle.is-open span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* Menú: fila en escritorio, overlay a pantalla completa en móvil */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+@media (max-width: 767px) {
+  .nav-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    background: linear-gradient(180deg, rgba(11, 13, 25, 0.97), rgba(7, 8, 15, 0.99));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.35s ease,
+      visibility 0.35s ease;
+  }
+  .nav-menu li {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+  .nav-menu .nav-link {
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+  }
+  .nav-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-menu.is-open li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-menu.is-open li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .nav-menu.is-open li:nth-child(2) {
+    transition-delay: 0.18s;
+  }
+  .nav-menu.is-open li:nth-child(3) {
+    transition-delay: 0.26s;
+  }
+  .nav-menu.is-open li:nth-child(4) {
+    transition-delay: 0.34s;
+  }
+}
+
 /* ── Hero ── */
 .hero-enter {
   opacity: 0;
