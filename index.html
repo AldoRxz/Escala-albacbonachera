@@ -26,7 +26,10 @@
         <a href="#inicio" class="font-display text-sm tracking-[0.2em] uppercase text-bone hover:text-gold transition-colors">
           Alba C. Bonachera
         </a>
-        <ul class="flex items-center gap-6 md:gap-10">
+        <button id="nav-toggle" class="nav-toggle md:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
           <li><a class="nav-link" href="#inicio">Inicio</a></li>
           <li><a class="nav-link" href="/libros/">Libros</a></li>
           <li><a class="nav-link" href="/faq/">FAQ</a></li>
@@ -67,7 +70,7 @@
       </section>
 
       <!-- ══════════════ SECCIÓN 2 · LA OBRA ══════════════ -->
-      <section id="la-obra" class="relative px-6 py-24 md:py-32">
+      <section id="la-obra" class="relative px-6 py-16 md:py-32">
         <div class="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[2fr_3fr] md:gap-20">
           <!-- Columna izquierda: portada flotando -->
           <div class="scroll-animate flex flex-col items-center gap-8">
@@ -99,12 +102,12 @@
                 ¿Qué pasa cuando las máscaras de los héroes ocultan una oscuridad más profunda que
                 la de los monstruos?
               </p>
-              <p>
+              <p class="hidden md:block">
                 ¿Podrá Kenji desenmarañar la verdad antes de que la balanza se incline hacia el
                 abismo?
               </p>
             </div>
-            <div class="mt-8 space-y-4 text-bone/80 leading-relaxed">
+            <div class="hidden md:block mt-8 space-y-4 text-bone/80 leading-relaxed">
               <p>
                 El detective Kenji Aozora, conocido por su habilidad para resolver los casos más
                 complicados, se encuentra atrapado en un desafío que trasciende la realidad cuando
@@ -123,9 +126,11 @@
               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <a href="https://www.amazon.es/dp/8409651440" class="btn-rpg" target="_blank" rel="noopener">Amazon (ESP)</a>
                 <a href="https://www.amazon.com/dp/8409651440" class="btn-rpg" target="_blank" rel="noopener">Amazon (EEUU y LATAM)</a>
-                <a href="https://www.alcalacomics.com/producto/la-boveda-en-el-cielo-los-caminantes-de-la-balanza-1/" class="btn-rpg" target="_blank" rel="noopener">Alcalá Cómics</a>
-                <a href="https://www.librerias-picasso.com/libro/boveda-en-el-cielo-la_909255" class="btn-rpg" target="_blank" rel="noopener">Picasso</a>
-                <a href="https://gigamesh.com/la-boveda-en-el-cielo-firmado/" class="btn-rpg" target="_blank" rel="noopener">Gigamesh</a>
+                <div class="hidden sm:contents">
+                  <a href="https://www.alcalacomics.com/producto/la-boveda-en-el-cielo-los-caminantes-de-la-balanza-1/" class="btn-rpg" target="_blank" rel="noopener">Alcalá Cómics</a>
+                  <a href="https://www.librerias-picasso.com/libro/boveda-en-el-cielo-la_909255" class="btn-rpg" target="_blank" rel="noopener">Picasso</a>
+                  <a href="https://gigamesh.com/la-boveda-en-el-cielo-firmado/" class="btn-rpg" target="_blank" rel="noopener">Gigamesh</a>
+                </div>
               </div>
             </div>
           </div>
@@ -149,7 +154,7 @@
               </p>
             </div>
             <div class="mt-8 space-y-4 text-bone/80 leading-relaxed">
-              <p>
+              <p class="hidden md:block">
                 Marnie siempre soñó con un mundo mágico lleno de maravillas, pero al encontrarlo,
                 descubre que las historias nunca cuentan toda la verdad. Dominik, un joven envuelto
                 en secretos, se convierte en su guía en un escenario donde las sombras se agitan y
@@ -198,7 +203,7 @@
       </section>
 
       <!-- ══════════════ SECCIÓN 3 · CRÓNICAS DE PERSONAJES ══════════════ -->
-      <section id="cronicas" class="relative px-6 py-24 md:py-32">
+      <section id="cronicas" class="relative px-6 py-16 md:py-32">
         <div class="mx-auto max-w-6xl">
           <h2 class="scroll-animate text-center font-display uppercase tracking-[0.2em] text-2xl md:text-3xl mb-16">
             Crónicas de <span class="text-gold">Personajes</span>
@@ -262,7 +267,7 @@
       </section>
 
       <!-- ══════════════ SECCIÓN 4 · GALERÍA DEL UNIVERSO ══════════════ -->
-      <section id="galeria" class="relative px-6 py-24 md:py-32">
+      <section id="galeria" class="relative px-6 py-16 md:py-32">
         <div class="mx-auto max-w-5xl">
           <h2 class="scroll-animate text-center font-display uppercase tracking-[0.2em] text-2xl md:text-3xl mb-16">
             Galería del <span class="text-gold">Universo</span>
@@ -290,7 +295,7 @@
       </section>
 
       <!-- ══════════════ SECCIÓN · LA AUTORA ══════════════ -->
-      <section id="autora" class="relative px-6 py-24 md:py-32">
+      <section id="autora" class="relative px-6 py-16 md:py-32">
         <div class="mx-auto max-w-3xl text-center">
           <h2 class="scroll-animate font-display uppercase tracking-[0.2em] text-2xl md:text-3xl">
             Alba C. <span class="text-gold">Bonachera</span>
@@ -301,7 +306,7 @@
               algunas partes de la red), lleva forjándose como narradora de historias desde el año
               2000.
             </p>
-            <p>
+            <p class="hidden md:block">
               Su camino comenzó con una curiosidad insaciable por todo tipo de historias y
               mitologías, y continuó con una sólida formación construida a base de leer todo lo que
               caía en sus manos y fantasear durante horas con mundos inventados. Formada en artes
